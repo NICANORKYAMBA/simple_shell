@@ -1,1 +1,1 @@
-# Team Project to create a simple shell using c language
+# Team Project to create a simple shell using C language

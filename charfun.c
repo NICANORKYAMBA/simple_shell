@@ -2,7 +2,7 @@
 
 /**
  * _strcmp - compare two string
- * 
+ *
  * @s1: string 1
  * @s2: string 2
  * Return: 0 if identical otherwise the difference
@@ -49,7 +49,7 @@ int _isalpha(int c)
 
 /**
  * _itoa - convert integer to char
- * 
+ *
  * @n: int to convert
  * Return: char pointer
  */
@@ -76,7 +76,7 @@ char *_itoa(unsigned int n)
 }
 /**
  * array_rev - Reverse Array
- * 
+ *
  * @arr: Array to reverse
  * @len: length of array
  * Return: Void(Reverse Array)
@@ -95,7 +95,7 @@ void array_rev(char *arr, int len)
 }
 /**
  * intlen - determine length of int
- * 
+ *
  * @num: given int
  * Return: length of int
  */

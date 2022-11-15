@@ -31,7 +31,7 @@ int path_cmd(char **cmd)
 }
 /**
  * build - build command
- * 
+ *
  * @token: excutable command
  * @value: Directory containing command
  *
@@ -59,7 +59,7 @@ char *build(char *token, char *value)
 }
 /**
  * _getenv - gets the value of enviroment variable by name
- * 
+ *
  * @name: environment variable name
  * Return: the value of the environment variable else NULL.
  */

@@ -74,6 +74,6 @@ Your Shell should:
 
 **execve** will be the core part of your Shell, don’t forget to pass the environ to it…
 
-** Repo: **
+**Repo:**
 
-GitHub repository: ** simple_shell **
+GitHub repository: **simple_shell**

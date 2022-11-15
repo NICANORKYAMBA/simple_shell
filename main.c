@@ -1,73 +1,90 @@
 #include "shell.h"
 
 /**
- *prompt - sends signal the prompt
- *@sl: prompt signal
- *
- *Return: (void)
+ * main - Simple Shell (Hsh)
+ * @argc: Argument Count
+ * @argv:Argument Value
+ * Return: Exit Value By Status
  */
 
-void prompt(int sl)
+int main(__attribute__((unused)) int argc, char **argv)
 {
-	(void)sl;
-	write(STDOUT_FILENO, "\n($) ", 5);
-}
+	char *input, **cmd;
+	int counter = 0, statue = 1, st = 0;
 
-/**
- *printprompt - prints the prompt to stdout
- *
- *Return: (void)
- */
-
-void printprompt(void)
-{
-	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "($) ", 4);
-}
-
-/**
- *main - main function.
- *@ac: argument count
- *@argv: argument vector
- *@env: enviroment variables
- *
- *Return: 0 on exit, 1 otherwise
- */
-
-int main(int ac, char **argv, char **env)
-{
-	char *buf = NULL, **commands;
-	size_t len = 0;
-	ssize_t chars;
-	pid_t chpid;
-	int status, counter = 0;
-	(void)ac;
-
-	printprompt();
-	while ((chars = getline(&buf, &len, stdin)))
+	if (argv[1] != NULL)
+		read_file(argv[1], argv);
+	signal(SIGINT, signal_to_handel);
+	while (statue)
 	{
-		signal(SIGINT, prompt);
-
-		if (chars == EOF)
-			end_of_file(buf);
 		counter++;
-
-		commands = string_strtok(buf);
-		chpid = fork();
-		if (chpid  == -1)
-			fork_handler();
-
-		if (chpid == 0)
-			ext(commands, buf, env, argv, counter);
+		if (isatty(STDIN_FILENO))
+			prompt();
+		input = _getline();
+		if (input[0] == '\0')
+		{
+			continue;
+		}
+		history(input);
+		cmd = parse_cmd(input);
+		if (_strcmp(cmd[0], "exit") == 0)
+		{
+			exit_bul(cmd, input, argv, counter);
+		}
+		else if (check_builtin(cmd) == 0)
+		{
+			st = handle_builtin(cmd, st);
+			free_all(cmd, input);
+			continue;
+		}
 		else
 		{
-			wait(&status);
-			freeptr(buf, commands);
+			st = check_cmd(cmd, input, counter, argv);
+
 		}
-		len = 0, buf = NULL;
-		printprompt();
+		free_all(cmd, input);
 	}
-	if (chars == -1)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	return (statue);
+}
+/**
+ * check_builtin - check builtin
+ *
+ * @cmd:command to check
+ * Return: 0 Succes -1 Fail
+ */
+int check_builtin(char **cmd)
+{
+	bul_t fun[] = {
+		{"cd", NULL},
+		{"help", NULL},
+		{"echo", NULL},
+		{"history", NULL},
+		{NULL, NULL}
+	};
+	int i = 0;
+		if (*cmd == NULL)
+	{
+		return (-1);
+	}
+
+	while ((fun + i)->command)
+	{
+		if (_strcmp(cmd[0], (fun + i)->command) == 0)
+			return (0);
+		i++;
+	}
+	return (-1);
+}
+/**
+ * creat_envi - Creat Array of Enviroment Variable
+ * @envi: Array of Enviroment Variable
+ * Return: Void
+ */
+void creat_envi(char **envi)
+{
+	int i;
+
+	for (i = 0; environ[i]; i++)
+		envi[i] = _strdup(environ[i]);
+	envi[i] = NULL;
 }

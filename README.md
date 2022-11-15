@@ -4,7 +4,7 @@
 
 Write a simple UNIX command interpreter.
 
-##List of allowed functions and system calls
+## List of allowed functions and system calls
 
 	* access (man 2 access)
 	* chdir (man 2 chdir)
@@ -40,13 +40,17 @@ Write a simple UNIX command interpreter.
 
 ##Tasks
 
-**0. Betty would be proud **
+** 0. Betty would be proud **
+
 Write a beautiful code that passes the Betty checks
-**Repo:**
+
+** Repo: **
 	* GitHub repository: simple_shell
 
-**1. Simple shell 0.1 **
+** 1. Simple shell 0.1 **
+
 Write a UNIX command line interpreter.
+
 	* Usage: **simple_shell**
 
 Your Shell should:
@@ -69,6 +73,6 @@ Your Shell should:
 
 **execve** will be the core part of your Shell, don’t forget to pass the environ to it…
 
-**Repo:**
+** Repo: **
 
-GitHub repository: **simple_shell**
+GitHub repository: ** simple_shell **

@@ -38,16 +38,17 @@ Write a simple UNIX command interpreter.
 	* wait4 (man 2 wait4)
 	* write (man 2 write)
 
-##Tasks
+## Tasks
 
-** 0. Betty would be proud **
+**0. Betty would be proud**
 
 Write a beautiful code that passes the Betty checks
 
-** Repo: **
+**Repo:**
+
 	* GitHub repository: simple_shell
 
-** 1. Simple shell 0.1 **
+**1. Simple shell 0.1**
 
 Write a UNIX command line interpreter.
 

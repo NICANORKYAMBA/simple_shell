@@ -37,7 +37,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 /**
  * free_all - frees memory block
- *  
+ *
  * @cmd:Array Pointer
  * @line:Char Pointer
  * Return: Void
@@ -52,7 +52,7 @@ void free_all(char **cmd, char *line)
 
 /**
  * _memcpy - copy byte
- * 
+ *
  * @dest: Destination
  * @src: Source
  * @n: number of bytes
@@ -72,7 +72,7 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 
 /**
  * fill_an_array - fill an array by constant byte
- * 
+ *
  * @a: Void Pointer
  * @el: int
  * @len: length int
@@ -95,7 +95,7 @@ void *fill_an_array(void *a, int el, unsigned int len)
 
 /**
  * _calloc -  allocates memory for an array.
- * 
+ *
  * @size: Size
  * Return: Void
  */
@@ -107,10 +107,10 @@ void *_calloc(unsigned int size)
 	if (size == 0)
 		return (NULL);
 	a = malloc(size);
-		
+
 	if (a == NULL)
 		return (NULL);
-	
+
 	for (i = 0; i < size; i++)
 	{
 		a[i] = '\0';

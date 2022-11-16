@@ -2,6 +2,15 @@
 #include "text.h"
 #include "commands.h"
 
+/**
+ * replacement - replaces
+ *
+ * @info: structure
+ * @index: index
+ * @string: string
+ *
+ * Return: character
+ */
 char *replacement(general_t *info, int *index, char *string)
 {
 	char *tmp;
@@ -22,6 +31,14 @@ char *replacement(general_t *info, int *index, char *string)
 	return (tmp);
 }
 
+/**
+ * replace_env - replaces environment variables
+ *
+ * @info: structure
+ * @environment: environmental variables
+ *
+ * Return: envronment variables
+ */
 char *replace_env(general_t *info, char *environment)
 {
 	char *env;
@@ -34,4 +51,3 @@ char *replace_env(general_t *info, char *environment)
 
 	return (NULL);
 }
-

@@ -1,109 +1,84 @@
 #include "shell.h"
 
 /**
- * _putchar - writes the character c to stdout
+ * _strcmp - compares two strings to find out if they are exactly the same
  *
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @name: name supplied by user to search for
+ * @variable: variable to compare against
+ * @length: length of name
+ * Return: 1 if strings are equal, -1 if they are not
  */
-
-int _putchar(char c)
+int _strcmp(char *name, char *variable, unsigned int length)
 {
-	return (write(1, &c, 1));
+	unsigned int var_length;
+	unsigned int i;
+
+	var_length = _strlen(variable);
+	if (var_length != length)
+		return (-1);
+
+	i = 0;
+	while (name[i] != '\0' && variable[i] != '\0')
+	{
+		if (name[i] != variable[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 /**
- * _strncpy - copie a string
+ * _strncmp - compares two strings up to given length are the same
  *
- * @dest:char
- * @src:char
- * @n:int
- * Return:char
+ *@name: name supplied by user to search for
+ *@variable: variable to compare against
+ *@length: length to compare up to
+ *Return: 1 if strings are equal, -1 if they are not
  */
-
-char *_strncpy(char *dest, char *src, int n)
+int _strncmp(char *name, char *variable, unsigned int length)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	while (i < n && *(src + i))
+	while (i < length)
 	{
-		*(dest + i) = *(src + i);
+		if (name[i] != variable[i])
+			return (-1);
 		i++;
 	}
-	while (i < n)
-	{
-		*(dest + i) = '\0';
-		i++;
-	}
+	return (1);
+}
+
+/**
+ *_strcpy - copies string pointed to by src to the buffer pointed to dest
+ *
+ *@dest: string destination
+ *@src: string source
+ *Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+	int j = _strlen(src);
+
+	for (i = 0; i <= j; i++)
+		dest[i] = src[i];
+
 	return (dest);
 }
 
 /**
- * _strlen - length of string
+ *_strlen - returns the length of a string
  *
- * @s:char
- * Return:int
+ *@s: string to be evaluated
+ *Return: length of string
  */
-
 int _strlen(char *s)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		continue;
-	}
-	return (i);
-}
-
-/**
- * _atoi - convert char to an int
- *
- * @s:string
- * Return:int
- */
-
-int _atoi(char *s)
-{
-	int i, j, n, x;
-
-	i = n = 0;
-	x = 1;
-
-	while ((s[i] < '0' || s[i] > '9') && (s[i] != '\0'))
-	{
-		if (s[i] == '-')
-			x *= -1;
+	while (s[i] != '\0')
 		i++;
-	}
 
-	j = i;
-
-	while ((s[j] >= '0') && (s[j] <= '9'))
-	{
-		n = (n * 10) + x * ((s[j]) - '0');
-		j++;
-	}
-	return (n);
-}
-
-/**
- * _puts - print a string
- *
- * @str: pointer char
- * return: void
- */
-
-void _puts(char *str)
-{
-	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
-	}
-	_putchar('\n');
+	return (i);
 }

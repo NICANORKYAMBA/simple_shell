@@ -1,29 +1,30 @@
 #include "shell.h"
 
 /**
- * prompt - Display Shell Prompt
+ * prompt - checks mode and prints prompt if in interactive mode
+ *
+ * @fd: file stream
+ * @buf: buffer
  */
-void prompt(void)
+void prompt(int fd, struct stat buf)
 {
-	PRINTER("($) ");
-}
-/**
- * print_error - Display Error Based on Command and How Many Time Shell Looped
- * @input:User Input
- * @counter:Simple Shell Count Loop
- * @argv:Program Name
- * Return: Void
- */
-void print_error(char *input, int counter, char **argv)
-{
-	char *er;
+	fstat(fd, &buf);
 
-	PRINTER(argv[0]);
-	PRINTER(": ");
-	er = _itoa(counter);
-	PRINTER(er);
-	free(er);
-	PRINTER(": ");
-	PRINTER(input);
-	PRINTER(": not found\n");
+	if (S_ISCHR(buf.st_mode))
+		_puts(PROMPT);
+}
+
+/**
+ * _puts - prints a string without a \n
+ *
+ * @str: string to print
+ * Return: void
+ */
+void _puts(char *str)
+{
+	unsigned int length;
+
+	length = _strlen(str);
+
+	write(STDOUT_FILENO, str, length);
 }

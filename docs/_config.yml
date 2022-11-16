@@ -1,0 +1,20 @@
+title: 'k_shell'
+description: "Simple Shell"
+
+header_pages:
+  - index.md
+  - get_started.md
+  - basic.md
+  - I/O.md
+  - signals.md
+  - env.md
+  - fork.md
+  - example.md
+
+style: hacker
+
+footer: 'follow us on <a href="https://github.com/davixcky/simple_shell/" target="_blank">github</a>'
+
+# Build settings
+markdown: kramdown
+remote_theme: b2a3e8/jekyll-theme-console

@@ -1,40 +1,33 @@
-#include "shell.h"
+#include "memory.h"
 
 /**
- * free_all - frees all malloc'd space at end of main loop
+ * free_memory_p - Free a pointer
  *
- * @tokens: pointer to tokens array
- * @path: pointer to path variable
- * @line: pointer to user input buffer
- * @fullpath: pointer to full path
- * @flag: flag marking if full_path was malloc'd
- * Return: void
- */
-void free_all(char **tokens, char *path, char *line, char *fullpath, int flag)
+ * @ptr: Pointer to free
+ **/
+void free_memory_p(void *ptr)
 {
-	free(path);
-	free(tokens);
-	free(line);
-	if (flag == 1)
-		free(fullpath);
-}
-
-/**
- * free_dp - free double pointer
- *
- * @array: double pointer to free
- * @length: length of double pointer
- * Return: void
- */
-void free_dp(char **array, unsigned int length)
-{
-	unsigned int i;
-
-	i = 0;
-	while (i < length)
+	if (ptr != NULL)
 	{
-		free(array[i]);
-		i++;
+		free(ptr);
+		ptr = NULL;
 	}
-	free(array);
+
+	ptr = NULL;
 }
+
+/**
+ * free_memory_pp - Free a double pointer
+ *
+ * @ptr: Double pointer to free
+ **/
+void free_memory_pp(void **ptr)
+{
+	void **tmp;
+
+	for (tmp = ptr; *tmp != NULL; tmp++)
+		free_memory_p(*tmp);
+
+	free_memory_p(ptr);
+}
+

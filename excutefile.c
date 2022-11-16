@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * read_file - read command from file
- *
+ * 
  * @filename: name of the file
  * @argv: name of the program
  * Return: -1 or  0
@@ -32,7 +32,7 @@ void read_file(char *filename, char **argv)
 }
 /**
  * treat_file - PARSE Check Command Fork Wait Excute in Line of File
- *
+ * 
  * @line: line from file
  * @counter: error counter
  * @fp: file descriptor
@@ -63,7 +63,7 @@ void treat_file(char *line, int counter, FILE *fp, char **argv)
 }
 /**
  * exit_bul_for_file - Exit Shell Case Of File
- *
+ * 
  * @line: Line From A File
  * @cmd: Parsed Command
  * @fd:File Descriptor

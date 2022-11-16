@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * check_delim - checks if a character match any char *
- *
+ * 
  * @c: character to check
  * @str: string to check
  * Return: 1 succes, 0 fail
@@ -20,7 +20,7 @@ unsigned int check_delim(char c, const char *str)
 
 /**
  * _strtok - token a string into tokens (strtrok)
- *
+ * 
  * @str: string
  * @delim: delimiter
  * Return: pointer to the next token or NULL

@@ -2,7 +2,7 @@
 
 /**
  * _putchar - writes the character c to stdout
- *
+ * 
  * @c: The character to print
  *
  * Return: On success 1.
@@ -16,7 +16,7 @@ int _putchar(char c)
 
 /**
  * _strncpy - copie a string
- *
+ * 
  * @dest:char
  * @src:char
  * @n:int
@@ -43,7 +43,7 @@ char *_strncpy(char *dest, char *src, int n)
 
 /**
  * _strlen - length of string
- *
+ * 
  * @s:char
  * Return:int
  */
@@ -61,7 +61,7 @@ int _strlen(char *s)
 
 /**
  * _atoi - convert char to an int
- *
+ * 
  * @s:string
  * Return:int
  */
@@ -72,16 +72,16 @@ int _atoi(char *s)
 
 	i = n = 0;
 	x = 1;
-
+	
 	while ((s[i] < '0' || s[i] > '9') && (s[i] != '\0'))
 	{
 		if (s[i] == '-')
 			x *= -1;
 		i++;
 	}
-
+	
 	j = i;
-
+	
 	while ((s[j] >= '0') && (s[j] <= '9'))
 	{
 		n = (n * 10) + x * ((s[j]) - '0');
@@ -92,7 +92,7 @@ int _atoi(char *s)
 
 /**
  * _puts - print a string
- *
+ * 
  * @str: pointer char
  * return: void
  */
@@ -106,4 +106,5 @@ void _puts(char *str)
 		_putchar(str[i]);
 	}
 	_putchar('\n');
+	return;
 }
